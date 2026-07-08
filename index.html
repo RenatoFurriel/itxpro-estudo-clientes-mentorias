@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ICP — Mentorias GRC TI START e PRO | ITXPRO</title>
+<style>
+  :root{
+    --orange:#F26522;      /* laranja ITXPRO */
+    --orange-dark:#c74e13;
+    --orange-soft:#fff1e9;
+    --orange-line:#f7c9ac;
+    --black:#111111;
+    --ink:#1a1a1a;
+    --muted:#6b6b6b;
+    --line:#ececec;
+    --bg:#f6f6f4;
+    --card:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+
+  /* ---------- HERO ---------- */
+  header.hero{background:var(--black);color:#fff;position:relative;overflow:hidden;padding:74px 0 64px}
+  header.hero::before{content:"";position:absolute;top:-120px;right:-120px;width:420px;height:420px;
+       background:radial-gradient(circle,rgba(242,101,34,.55),transparent 68%);filter:blur(10px)}
+  header.hero::after{content:"";position:absolute;left:0;bottom:0;height:6px;width:100%;
+       background:linear-gradient(90deg,var(--orange),var(--orange-dark))}
+  .brand{display:flex;align-items:center;gap:12px;margin-bottom:30px;position:relative;z-index:2}
+  .brand .logo{font-weight:900;letter-spacing:-1px;font-size:22px}
+  .brand .logo span{color:var(--orange)}
+  .brand .divider{width:1px;height:22px;background:#444}
+  .brand .tagline{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#9a9a9a}
+  .kicker{position:relative;z-index:2;display:inline-block;background:var(--orange);color:#fff;
+       font-size:11.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+       padding:7px 14px;border-radius:100px;margin-bottom:20px}
+  header.hero h1{position:relative;z-index:2;font-size:42px;line-height:1.12;font-weight:900;
+       letter-spacing:-1px;margin-bottom:18px;max-width:900px}
+  header.hero h1 em{font-style:normal;color:var(--orange)}
+  header.hero p{position:relative;z-index:2;font-size:18px;color:#cfcfcf;max-width:780px}
+  .herometa{position:relative;z-index:2;margin-top:26px;display:flex;gap:28px;flex-wrap:wrap}
+  .herometa div{font-size:13px;color:#9a9a9a}
+  .herometa b{display:block;font-size:24px;color:#fff;font-weight:800;letter-spacing:-.5px}
+  .herometa b span{color:var(--orange)}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:58px 0}
+  .eyebrow{display:flex;align-items:center;gap:10px;font-size:12px;text-transform:uppercase;
+       letter-spacing:.16em;color:var(--orange-dark);font-weight:800;margin-bottom:14px}
+  .eyebrow::before{content:"";width:26px;height:3px;background:var(--orange);border-radius:2px}
+  .lead{font-size:28px;font-weight:900;letter-spacing:-.6px;line-height:1.25;max-width:880px;margin-bottom:6px}
+  .lead .o{color:var(--orange)}
+  .sub{font-size:16px;color:var(--muted);max-width:820px;margin-top:14px}
+
+  .oneliner{background:var(--black);color:#fff;border-radius:18px;padding:30px 34px;margin-top:30px;
+       display:flex;align-items:center;justify-content:center;gap:22px;flex-wrap:wrap;
+       font-size:22px;font-weight:800;letter-spacing:-.3px;text-align:center;position:relative;overflow:hidden}
+  .oneliner::after{content:"";position:absolute;right:-60px;top:-60px;width:200px;height:200px;
+       background:radial-gradient(circle,rgba(242,101,34,.4),transparent 70%)}
+  .oneliner .chip{background:var(--orange);color:#fff;padding:6px 16px;border-radius:100px;font-size:15px;letter-spacing:.1em}
+  .oneliner .mid{color:#777;font-weight:400}
+
+  /* ---------- CARDS ---------- */
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;
+        box-shadow:0 10px 40px rgba(17,17,17,.06);display:flex;flex-direction:column}
+  .card .top{padding:26px 30px;position:relative}
+  .card.start .top{background:var(--black);color:#fff}
+  .card.pro .top{background:linear-gradient(135deg,var(--orange),var(--orange-dark));color:#fff}
+  .card .top .tag{display:inline-block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+       font-weight:800;padding:5px 12px;border-radius:100px;margin-bottom:14px}
+  .card.start .top .tag{background:var(--orange);color:#fff}
+  .card.pro .top .tag{background:rgba(0,0,0,.28);color:#fff}
+  .card .top h3{font-size:26px;font-weight:900;letter-spacing:-.5px;margin-bottom:10px}
+  .card .top .who{font-size:14.5px;line-height:1.55;opacity:.95}
+  .card .body{padding:10px 30px 6px}
+  .row{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+  .row:last-child{border-bottom:none}
+  .row .k{color:var(--muted);flex:0 0 40%;font-weight:500}
+  .row .v{font-weight:700;text-align:right;flex:1}
+  .pain{margin:14px 30px 30px;padding:16px 18px;border-radius:14px;font-size:14px;line-height:1.55;
+       background:var(--orange-soft);border:1px solid var(--orange-line)}
+  .pain b{display:block;margin-bottom:5px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--orange-dark)}
+  .msg{margin:0 30px 30px;padding:16px 18px;border-left:4px solid var(--black);background:#f6f6f4;border-radius:0 12px 12px 0;font-size:14px}
+  .card.pro .msg{border-left-color:var(--orange)}
+  .msg b{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+
+  /* ---------- STAT CHIPS ---------- */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 20px;position:relative;overflow:hidden}
+  .stat::before{content:"";position:absolute;left:0;top:0;width:100%;height:4px}
+  .stat.start::before{background:var(--black)} .stat.pro::before{background:var(--orange)}
+  .stat .band{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
+  .stat.start .band{color:var(--black)} .stat.pro .band{color:var(--orange-dark)}
+  .stat .num{font-size:38px;font-weight:900;letter-spacing:-1.5px;line-height:1}
+  .stat.start .num{color:var(--black)} .stat.pro .num{color:var(--orange)}
+  .stat .lbl{font-size:13px;color:var(--muted);margin-top:8px;line-height:1.4}
+
+  /* ---------- COMPARISON TABLE ---------- */
+  table.cmp{width:100%;border-collapse:collapse;background:var(--card);border-radius:18px;overflow:hidden;
+        border:1px solid var(--line);font-size:14.5px;box-shadow:0 10px 40px rgba(17,17,17,.05)}
+  table.cmp th,table.cmp td{padding:15px 20px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  table.cmp thead th{font-size:13px;letter-spacing:.04em;font-weight:800}
+  table.cmp thead th:first-child{background:#fafafa;color:var(--muted)}
+  table.cmp thead th.s{background:var(--black);color:#fff}
+  table.cmp thead th.p{background:var(--orange);color:#fff}
+  table.cmp td:first-child{color:var(--ink);font-weight:700;width:24%}
+  table.cmp td.p{background:var(--orange-soft)}
+  table.cmp tbody tr:last-child td{border-bottom:none}
+
+  /* ---------- CAREER STATUS QUOTES ---------- */
+  .quotes{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  .qcol h4{font-size:16px;font-weight:900;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+  .qcol h4 .dot{width:12px;height:12px;border-radius:3px}
+  .qcol.start h4 .dot{background:var(--black)} .qcol.pro h4 .dot{background:var(--orange)}
+  .q{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:12px;
+     font-size:14px;font-style:italic;color:var(--ink);position:relative;padding-left:38px}
+  .q::before{content:"\201C";position:absolute;left:12px;top:6px;font-size:34px;font-weight:900;line-height:1;
+     font-family:Georgia,serif}
+  .qcol.start .q::before{color:var(--black)} .qcol.pro .q::before{color:var(--orange)}
+
+  /* ---------- RECOMMENDATIONS ---------- */
+  .recos{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .reco{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;position:relative}
+  .reco .n{position:absolute;top:22px;right:24px;font-size:34px;font-weight:900;color:var(--orange-soft)}
+  .reco h4{font-size:16.5px;margin-bottom:8px;font-weight:800;padding-right:40px}
+  .reco p{font-size:14px;color:var(--muted)}
+  .reco.full{grid-column:1/-1;background:var(--black);color:#fff;border-color:var(--black)}
+  .reco.full h4{color:#fff} .reco.full p{color:#cfcfcf} .reco.full .n{color:rgba(242,101,34,.35)}
+  .funnel{display:flex;align-items:center;justify-content:flex-start;gap:16px;flex-wrap:wrap;margin-top:20px}
+  .fbox{padding:16px 26px;border-radius:12px;font-weight:800;font-size:14px}
+  .fbox.s{background:#fff;color:var(--black)} .fbox.p{background:var(--orange);color:#fff}
+  .farrow{font-size:26px;color:var(--orange)}
+
+  .disc{background:#fff;border:1px solid var(--orange-line);border-left:4px solid var(--orange);
+        color:var(--ink);border-radius:0 14px 14px 0;padding:18px 22px;font-size:13.5px;margin-top:32px;line-height:1.6}
+  .disc b{color:var(--orange-dark)}
+
+  footer{padding:36px 0 64px;text-align:center}
+  footer .fbrand{font-weight:900;font-size:18px;letter-spacing:-.5px}
+  footer .fbrand span{color:var(--orange)}
+  footer .fmeta{color:var(--muted);font-size:13px;margin-top:6px}
+
+  @media(max-width:820px){
+    .cards,.recos,.stats,.quotes{grid-template-columns:1fr}
+    header.hero h1{font-size:30px}.lead{font-size:22px}.oneliner{font-size:18px}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="brand">
+      <div class="logo">ITX<span>PRO</span></div>
+      <div class="divider"></div>
+      <div class="tagline">Estudo de Clientes · Julho 2026</div>
+    </div>
+    <div class="kicker">Perfil de Cliente Ideal — ICP</div>
+    <h1>Quem compra a Mentoria <em>START</em> e quem compra a Mentoria <em>PRO</em></h1>
+    <p>Análise das bases de clientes dos dois produtos para definir com precisão o perfil de cada mentoria — e orientar como comunicar, qualificar e vender para cada público.</p>
+    <div class="herometa">
+      <div><b>27</b> clientes START analisados</div>
+      <div><b>28</b> clientes PRO analisados</div>
+      <div><b>GRC TI<span>.</span></b> mercado-alvo</div>
+    </div>
+  </div>
+</header>
+
+<!-- RESUMO EXECUTIVO -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Resumo Executivo</div>
+    <p class="lead">Mesmo mercado, <span class="o">momentos de carreira</span> diferentes.</p>
+    <p class="sub">Os dois produtos atendem o mesmo público de fundo — profissionais de TI/GRC no Brasil, majoritariamente homens, na faixa dos 35 aos 54 anos, concentrados em Pernambuco e São Paulo. O que os separa não é o cargo, e sim o <b>nível de experiência em GRC</b> e a <b>ambição de carreira</b>. O START captura quem está <b>entrando ou destravando</b>; o PRO, quem <b>já está dentro e quer subir</b>.</p>
+    <div class="oneliner">
+      <span class="chip">START</span> vende entrada e segurança
+      <span class="mid">·</span>
+      <span class="chip">PRO</span> vende avanço e autoridade
+    </div>
+  </div>
+</section>
+
+<!-- PERFIS -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="eyebrow">Os dois perfis</div>
+    <div class="cards">
+
+      <!-- START -->
+      <div class="card start">
+        <div class="top">
+          <div class="tag">Mentoria START</div>
+          <h3>Quem está entrando</h3>
+          <div class="who">O profissional de TI (ou área correlata) que ainda não se firmou em GRC/Governança e busca uma porta de entrada estruturada — muitas vezes vindo de um momento de recolocação ou de estagnação em uma função puramente técnica.</div>
+        </div>
+        <div class="body">
+          <div class="row"><span class="k">Gênero</span><span class="v">Masculino (74%)</span></div>
+          <div class="row"><span class="k">Idade dominante</span><span class="v">35 a 44 anos (42%) · depois 45–54 (27%)</span></div>
+          <div class="row"><span class="k">Experiência em GRC TI</span><span class="v">Indireta ou iniciante (60%); só 40% já têm experiência</span></div>
+          <div class="row"><span class="k">Experiência em COBIT</span><span class="v">"Fiz um curso, pratiquei pouco" (64%)</span></div>
+          <div class="row"><span class="k">Faixa salarial</span><span class="v">R$ 5K a 10K (37%)</span></div>
+          <div class="row"><span class="k">Função</span><span class="v">Gestor/Analista de TI e cargos de GRC em início</span></div>
+          <div class="row"><span class="k">Status de carreira</span><span class="v">Recolocação e ingresso em GRC TI</span></div>
+          <div class="row"><span class="k">Localização</span><span class="v">Pernambuco (líder), São Paulo</span></div>
+        </div>
+        <div class="pain">
+          <b>Dor central</b>
+          Insegurança técnica ("vejo oportunidades mas não me sinto preparado"), falta de experiência prática comprovável, desemprego ou vontade de sair de uma função puramente operacional de TI.
+        </div>
+        <div class="msg">
+          <b>O que o START precisa entregar</b>
+          Um caminho claro e seguro para <b>entrar</b> em GRC TI, com prática aplicada em COBIT e prova de capacidade — reduzindo o medo de "não estar pronto".
+        </div>
+      </div>
+
+      <!-- PRO -->
+      <div class="card pro">
+        <div class="top">
+          <div class="tag">Mentoria PRO</div>
+          <h3>Quem quer subir</h3>
+          <div class="who">O profissional que já atua em TI/GRC/Cyber, com experiência real, e quer dar o próximo salto — posições mais estratégicas, atuação como consultor/auditor ou remuneração e carreira internacionais.</div>
+        </div>
+        <div class="body">
+          <div class="row"><span class="k">Gênero</span><span class="v">Masculino (68%)</span></div>
+          <div class="row"><span class="k">Idade dominante</span><span class="v">45 a 54 anos (41%) · depois 35–44 (36%)</span></div>
+          <div class="row"><span class="k">Experiência em GRC TI</span><span class="v">Consolidada — "tenho experiência" (68%)</span></div>
+          <div class="row"><span class="k">Experiência em COBIT</span><span class="v">Mais avançado: boa experiência (23%) e certificados</span></div>
+          <div class="row"><span class="k">Faixa salarial</span><span class="v">R$ 15K a 20K é a maior fatia (36%)</span></div>
+          <div class="row"><span class="k">Função</span><span class="v">Gestor de Cyber/Segurança, Especialista, Consultor</span></div>
+          <div class="row"><span class="k">Relação com o expert</span><span class="v">64% conhecem há mais de 1 ano — base fiel</span></div>
+          <div class="row"><span class="k">Localização</span><span class="v">Pernambuco (líder), São Paulo, DF</span></div>
+        </div>
+        <div class="pain">
+          <b>Dor central</b>
+          Estagnação em função técnica ("na mesma função há mais tempo do que gostaria"), teto de remuneração e desejo de autoridade/independência — consultor, auditor — e de projeção internacional.
+        </div>
+        <div class="msg">
+          <b>O que o PRO precisa entregar</b>
+          Avanço de nível — de operador/analista a <b>estrategista, consultor ou auditor reconhecido</b>, com certificação, posicionamento e acesso a oportunidades melhores (inclusive fora do país).
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- NÚMEROS -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="eyebrow">Os números que separam os públicos</div>
+    <div class="stats">
+      <div class="stat start"><div class="band">START</div><div class="num">40%</div><div class="lbl">já têm experiência em GRC TI</div></div>
+      <div class="stat pro"><div class="band">PRO</div><div class="num">68%</div><div class="lbl">já têm experiência em GRC TI</div></div>
+      <div class="stat start"><div class="band">START</div><div class="num">30%</div><div class="lbl">ganham R$ 15K ou mais</div></div>
+      <div class="stat pro"><div class="band">PRO</div><div class="num">45%</div><div class="lbl">ganham R$ 15K ou mais</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARATIVO -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="eyebrow">Comparativo lado a lado</div>
+    <table class="cmp">
+      <thead>
+        <tr><th>Critério</th><th class="s">START</th><th class="p">PRO</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Momento de carreira</td><td>Entrando / se recolocando</td><td class="p">Consolidado, quer subir</td></tr>
+        <tr><td>Experiência em GRC TI</td><td>Indireta / iniciante (maioria)</td><td class="p">Já tem experiência (68%)</td></tr>
+        <tr><td>Salário típico</td><td>R$ 5K–10K</td><td class="p">R$ 15K–20K</td></tr>
+        <tr><td>% ganhando ≥ R$ 15K</td><td>30%</td><td class="p">45%</td></tr>
+        <tr><td>Idade dominante</td><td>35–44 anos</td><td class="p">45–54 anos</td></tr>
+        <tr><td>Cargos</td><td>Analista/Gestor de TI, GRC iniciante</td><td class="p">Gestor de Cyber, Especialista, Consultor</td></tr>
+        <tr><td>Principal desejo</td><td>Entrar e se sentir preparado</td><td class="p">Ser estratégico, consultor, internacional</td></tr>
+        <tr><td>Relação com a marca</td><td>Mais recente</td><td class="p">Mais fiel (64% conhecem há +1 ano)</td></tr>
+        <tr><td>Gatilho de compra</td><td>Segurança e recolocação</td><td class="p">Ambição, status e remuneração</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- VOZ DO CLIENTE / STATUS DE CARREIRA -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="eyebrow">A voz do cliente — status de carreira declarado</div>
+    <div class="quotes">
+      <div class="qcol start">
+        <h4><span class="dot"></span>START — entrada e segurança</h4>
+        <div class="q">Estou desempregado(a) e quero recolocação</div>
+        <div class="q">Quero entrar no mercado de GRC TI</div>
+        <div class="q">Vejo oportunidades mas não me sinto preparado</div>
+        <div class="q">Sou de TI, mas quero algo mais estratégico</div>
+      </div>
+      <div class="qcol pro">
+        <h4><span class="dot"></span>PRO — avanço e autoridade</h4>
+        <div class="q">Já tenho uma boa experiência em GRC TI ou Cyber</div>
+        <div class="q">Estou na mesma função há mais tempo do que gostaria</div>
+        <div class="q">Gostaria de atuar como consultor ou auditor independente</div>
+        <div class="q">Busco recolocação para aumentar remuneração / carreira internacional</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECOMENDAÇÕES -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="eyebrow">Recomendações práticas</div>
+    <div class="recos">
+      <div class="reco">
+        <div class="n">1</div>
+        <h4>Segmentar pelo momento, não pelo cargo</h4>
+        <p>O mesmo cargo (ex.: Gestor de TI) aparece nos dois públicos. O que separa é o nível de experiência em GRC e a ambição declarada — use isso para qualificar o lead.</p>
+      </div>
+      <div class="reco">
+        <div class="n">2</div>
+        <h4>START — vencer a insegurança</h4>
+        <p>Foco em "do zero ao primeiro projeto de GRC": prova de prática e recolocação. Público que ganha até R$ 10K e ainda não se firmou na área.</p>
+      </div>
+      <div class="reco">
+        <div class="n">3</div>
+        <h4>PRO — avanço, autoridade e remuneração</h4>
+        <p>Consultor/auditor, certificação avançada e carreira internacional. Vender para quem já tem experiência e ganha R$ 15K+.</p>
+      </div>
+      <div class="reco">
+        <div class="n">4</div>
+        <h4>Priorizar geografia</h4>
+        <p>Pernambuco e São Paulo concentram os dois públicos — foco nessas praças (eventos, tráfego local). O DF aparece com força relativa no PRO (perfil sênior / setor público).</p>
+      </div>
+      <div class="reco full">
+        <div class="n">5</div>
+        <h4>Trilha de upsell natural: START → PRO</h4>
+        <p>O START é o funil de entrada. Conforme o mentorado ganha experiência e sobe de salário, ele se torna exatamente o ICP do PRO. Vale desenhar essa jornada de forma explícita na esteira de produtos.</p>
+        <div class="funnel">
+          <div class="fbox s">START · entra e se prepara</div>
+          <div class="farrow">→</div>
+          <div class="fbox p">PRO · avança e vira autoridade</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="disc">
+      <b>Nota metodológica.</b> Base pequena (START = 27 registros; PRO = 28). Os percentuais indicam tendência, não estatística definitiva, e são calculados sobre quem respondeu cada campo (alguns registros têm campos em branco). Recomenda-se revalidar as tendências à medida que a base de clientes cresce.
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fbrand">ITX<span>PRO</span></div>
+    <div class="fmeta">Estudo de Clientes · Mentorias GRC TI START e PRO · Julho 2026</div>
+  </div>
+</footer>
+
+</body>
+</html>

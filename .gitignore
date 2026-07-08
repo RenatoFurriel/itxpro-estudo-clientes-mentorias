@@ -1,0 +1,5 @@
+# Dados pessoais de clientes/leads — NÃO versionar (LGPD)
+*.csv
+
+# Sistema
+.DS_Store
