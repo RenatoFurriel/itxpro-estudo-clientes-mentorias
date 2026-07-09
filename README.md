@@ -12,6 +12,7 @@ Análise do **Perfil de Cliente Ideal (ICP)** das duas mentorias da ITXPRO, base
 |---|---|
 | [`index.html`](index.html) | Página visual do estudo (publicada via GitHub Pages, design ITXPRO) |
 | [`ICP-Mentorias-Start-e-PRO.md`](ICP-Mentorias-Start-e-PRO.md) | Versão em Markdown do estudo completo |
+| [`questionario-entrada-alunos.md`](questionario-entrada-alunos.md) | Questionário de onboarding dos novos alunos — mantém as novas respostas comparáveis com a base do estudo |
 
 ## Resumo do estudo
 
